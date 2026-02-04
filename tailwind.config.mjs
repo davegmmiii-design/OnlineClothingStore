@@ -7,7 +7,7 @@ export default {
     theme: {
         extend: {
             colors: {
-                primary: "#ff4d8d", // A premium boutique pink
+                primary: "#ff4d8d",
                 secondary: "#1a1a1a",
             }
         },

@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -31,6 +29,6 @@ body {
 
 /* Telegram Mini App Theme Integration */
 body {
-    background-color: var(--tg-theme-bg-color, #0f0f0f);
-    color: var(--tg-theme-text-color, #ffffff);
+  background-color: var(--tg-theme-bg-color, #0f0f0f);
+  color: var(--tg-theme-text-color, #ffffff);
 }

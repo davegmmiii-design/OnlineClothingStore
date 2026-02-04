@@ -92,23 +92,23 @@ function App() {
     };
 
     return (
-        <div className="min-h-screen bg-[#0f0f0f] text-white pb-24">
+        <div className="min-h-screen bg-gray-50 text-gray-900 pb-24">
             {/* Header */}
-            <header className="sticky top-0 z-50 bg-[#0f0f0f]/80 backdrop-blur-lg border-b border-white/5 p-4 flex justify-between items-center">
+            <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-100 p-4 flex justify-between items-center">
                 <div>
-                    <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-pink-400 bg-clip-text text-transparent">
+                    <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-pink-500 bg-clip-text text-transparent">
                         OnlineClothingStore
                     </h1>
-                    <p className="text-[10px] text-gray-500 font-medium tracking-widest uppercase">Direct Boutique</p>
+                    <p className="text-[10px] text-gray-400 font-medium tracking-widest uppercase">Direct Boutique</p>
                 </div>
                 <div className="flex items-center gap-3">
                     <button
                         onClick={() => setActiveTab('cart')}
-                        className="relative bg-white/5 p-2.5 rounded-xl border border-white/10 hover:bg-primary/20 transition-all"
+                        className="relative bg-gray-100 p-2.5 rounded-xl border border-gray-200 hover:bg-primary/10 transition-all text-gray-700"
                     >
                         <ShoppingBag size={20} />
                         {cart.length > 0 && (
-                            <span className="absolute -top-1 -right-1 bg-primary text-[10px] font-bold h-5 w-5 flex items-center justify-center rounded-full border-2 border-[#0f0f0f]">
+                            <span className="absolute -top-1 -right-1 bg-primary text-[10px] font-bold h-5 w-5 flex items-center justify-center rounded-full border-2 border-white text-white">
                                 {cart.length}
                             </span>
                         )}
@@ -131,24 +131,24 @@ function App() {
             </main>
 
             {/* Bottom Navigation */}
-            <nav className="fixed bottom-0 left-0 right-0 z-50 bg-[#1a1a1a]/90 backdrop-blur-xl border-t border-white/5 px-6 py-3 flex justify-around items-center">
+            <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-xl border-t border-gray-100 px-6 py-3 flex justify-around items-center shadow-lg shadow-black/5">
                 <button
                     onClick={() => setActiveTab('shop')}
-                    className={`flex flex-col items-center gap-1 transition-all ${activeTab === 'shop' ? 'text-primary scale-110' : 'text-gray-500'}`}
+                    className={`flex flex-col items-center gap-1 transition-all ${activeTab === 'shop' ? 'text-primary scale-110' : 'text-gray-400'}`}
                 >
                     <Store size={22} />
                     <span className="text-[10px] font-bold uppercase tracking-tighter">Boutique</span>
                 </button>
                 <button
                     onClick={() => setActiveTab('cart')}
-                    className={`flex flex-col items-center gap-1 transition-all ${activeTab === 'cart' ? 'text-primary scale-110' : 'text-gray-500'}`}
+                    className={`flex flex-col items-center gap-1 transition-all ${activeTab === 'cart' ? 'text-primary scale-110' : 'text-gray-400'}`}
                 >
                     <ShoppingBag size={22} />
                     <span className="text-[10px] font-bold uppercase tracking-tighter">Cart</span>
                 </button>
                 <button
                     onClick={() => setActiveTab('orders')}
-                    className={`flex flex-col items-center gap-1 transition-all ${activeTab === 'orders' ? 'text-primary scale-110' : 'text-gray-500'}`}
+                    className={`flex flex-col items-center gap-1 transition-all ${activeTab === 'orders' ? 'text-primary scale-110' : 'text-gray-400'}`}
                 >
                     <History size={22} />
                     <span className="text-[10px] font-bold uppercase tracking-tighter">My Orders</span>

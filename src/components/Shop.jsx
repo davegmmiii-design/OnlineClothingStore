@@ -6,32 +6,32 @@ import WebApp from '@twa-dev/sdk';
 const APPS_SCRIPT_URL = import.meta.env.VITE_APPS_SCRIPT_URL;
 
 const ProductCard = ({ product, addToCart }) => (
-    <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-sm hover:border-primary/50 transition-all duration-300 flex flex-col h-full">
-        <div className="aspect-square w-full overflow-hidden bg-white/10 relative">
+    <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300 flex flex-col h-full">
+        <div className="aspect-square w-full overflow-hidden bg-gray-50 relative">
             <img
                 src={product.Image_URL || 'https://via.placeholder.com/400x400?text=No+Image'}
                 alt={product.Name}
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
             />
             {parseInt(product.Stock) <= 0 && (
-                <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+                <div className="absolute inset-0 bg-white/60 flex items-center justify-center">
                     <span className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Out of Stock</span>
                 </div>
             )}
         </div>
         <div className="p-4 flex-1 flex flex-col">
             <div className="flex justify-between items-start mb-2">
-                <h3 className="font-semibold text-lg line-clamp-1">{product.Name}</h3>
-                <span className="text-primary font-bold text-lg">${product.Price}</span>
+                <h3 className="font-semibold text-sm text-gray-900 line-clamp-1">{product.Name}</h3>
+                <span className="text-primary font-bold text-base">${product.Price}</span>
             </div>
-            <p className="text-gray-400 text-xs mb-4 line-clamp-2">{product.Description}</p>
+            <p className="text-gray-500 text-[11px] mb-4 line-clamp-2">{product.Description}</p>
             <div className="mt-auto">
                 <button
                     onClick={() => addToCart(product)}
                     disabled={parseInt(product.Stock) <= 0}
-                    className="w-full bg-primary hover:bg-primary/80 disabled:bg-gray-700 text-white font-bold py-2.5 rounded-xl transition-colors flex items-center justify-center gap-2 group"
+                    className="w-full bg-primary hover:bg-primary/90 disabled:bg-gray-300 text-white font-bold py-2.5 rounded-xl transition-all flex items-center justify-center gap-2 group shadow-lg shadow-primary/20"
                 >
-                    <Plus size={18} className="group-hover:rotate-90 transition-transform" />
+                    <Plus size={16} className="group-hover:rotate-90 transition-transform" />
                     Add to Cart
                 </button>
             </div>
@@ -80,14 +80,14 @@ const Shop = ({ addToCart }) => {
     if (error) {
         return (
             <div className="flex flex-col items-center justify-center min-h-[50vh] text-center p-6">
-                <div className="bg-red-500/10 p-4 rounded-full mb-4">
-                    <ShoppingBag className="text-red-500" size={32} />
+                <div className="bg-red-50 p-4 rounded-full mb-4 text-red-500">
+                    <ShoppingBag size={32} />
                 </div>
-                <h3 className="text-lg font-bold mb-2">Boutique Offline</h3>
-                <p className="text-gray-400 text-sm max-w-xs">{error}. Please check your connection or Apps Script settings.</p>
+                <h3 className="text-lg font-bold mb-2 text-gray-900">Boutique Offline</h3>
+                <p className="text-gray-500 text-sm max-w-xs">{error}. Please check your connection or Apps Script settings.</p>
                 <button
                     onClick={() => { setLoading(true); setError(null); fetchProducts(); }}
-                    className="mt-6 px-6 py-2 bg-primary rounded-xl font-bold"
+                    className="mt-6 px-6 py-2 bg-primary text-white rounded-xl font-bold shadow-lg shadow-primary/20"
                 >
                     Try Again
                 </button>
@@ -97,10 +97,10 @@ const Shop = ({ addToCart }) => {
 
     if (products.length === 0) {
         return (
-            <div className="flex flex-col items-center justify-center min-h-[50vh] text-center p-6">
-                <ShoppingBag className="text-gray-600 mb-4" size={48} />
-                <h3 className="text-lg font-bold mb-2">Boutique Empty</h3>
-                <p className="text-gray-400 text-sm">No products found in the database. Add some items to your "Products" sheet!</p>
+            <div className="flex flex-col items-center justify-center min-h-[50vh] text-center p-6 text-gray-400">
+                <ShoppingBag size={48} className="mb-4" />
+                <h3 className="text-lg font-bold mb-2 text-gray-900">Boutique Empty</h3>
+                <p className="text-sm">No products found in the database. Add some items to your "Products" sheet!</p>
             </div>
         );
     }
@@ -108,14 +108,14 @@ const Shop = ({ addToCart }) => {
     return (
         <div className="space-y-6">
             {/* Category Tabs */}
-            <div className="flex gap-2 overflow-x-auto pb-4 scrollbar-hide">
+            <div className="flex gap-2 overflow-x-auto pb-4 scrollbar-hide -mx-4 px-4 font-outfit">
                 {categories.map(cat => (
                     <button
                         key={cat}
                         onClick={() => setCategory(cat)}
-                        className={`px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-all ${category === cat
+                        className={`px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all ${category === cat
                             ? 'bg-primary text-white shadow-lg shadow-primary/30'
-                            : 'bg-white/5 text-gray-400 border border-white/10'
+                            : 'bg-white text-gray-400 border border-gray-100 hover:border-primary/20'
                             }`}
                     >
                         {cat}

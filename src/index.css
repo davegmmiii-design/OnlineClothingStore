@@ -5,9 +5,9 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #0f0f0f;
+  color-scheme: light;
+  color: #1a1a1a;
+  background-color: #f8f9fa;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -29,6 +29,6 @@ body {
 
 /* Telegram Mini App Theme Integration */
 body {
-  background-color: var(--tg-theme-bg-color, #0f0f0f);
-  color: var(--tg-theme-text-color, #ffffff);
+  background-color: var(--tg-theme-bg-color, #f8f9fa);
+  color: var(--tg-theme-text-color, #1a1a1a);
 }

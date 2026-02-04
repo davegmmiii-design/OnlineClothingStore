@@ -29,7 +29,8 @@ const ProductCard = ({ product, addToCart }) => (
                 <button
                     onClick={() => addToCart(product)}
                     disabled={parseInt(product.Stock) <= 0}
-                    className="w-full bg-primary hover:bg-primary/90 disabled:bg-gray-300 text-white font-bold py-2.5 rounded-xl transition-all flex items-center justify-center gap-2 group shadow-lg shadow-primary/20"
+                    style={{ backgroundColor: '#ff4d8d', color: '#ffffff' }}
+                    className="w-full hover:opacity-90 disabled:bg-gray-300 font-bold py-2.5 rounded-xl transition-all flex items-center justify-center gap-2 group shadow-lg shadow-pink-200"
                 >
                     <Plus size={16} className="group-hover:rotate-90 transition-transform" />
                     Add to Cart

@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #ff4d8d;
+  --color-secondary: #1a1a1a;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -29,7 +34,7 @@ body {
   width: 100%;
 }
 
-/* Force dark text for all spans, paragraphs and headers to fix white-on-white issues */
+/* Force dark text for all spans, paragraphs and headers */
 p,
 span,
 h1,
@@ -40,4 +45,15 @@ h5,
 h6,
 div {
   color: inherit;
+}
+
+/* High Contrast Button Fixes */
+button.bg-primary {
+  background-color: #ff4d8d !important;
+  color: #ffffff !important;
+}
+
+button.bg-gray-100 {
+  background-color: #f3f4f6 !important;
+  color: #000000 !important;
 }

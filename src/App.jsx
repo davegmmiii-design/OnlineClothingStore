@@ -92,23 +92,23 @@ function App() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 text-gray-900 pb-24">
+        <div className="min-h-screen bg-white text-gray-900 pb-24">
             {/* Header */}
-            <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-100 p-4 flex justify-between items-center">
+            <header className="sticky top-0 z-50 bg-white border-b border-gray-100 p-4 flex justify-between items-center shadow-sm">
                 <div>
-                    <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-pink-500 bg-clip-text text-transparent">
-                        OnlineClothingStore
+                    <h1 className="text-xl font-black text-gray-900">
+                        Online<span className="text-primary">Clothing</span>Store
                     </h1>
-                    <p className="text-[10px] text-gray-400 font-medium tracking-widest uppercase">Direct Boutique</p>
+                    <p className="text-[10px] text-gray-500 font-bold tracking-widest uppercase">Direct Boutique</p>
                 </div>
                 <div className="flex items-center gap-3">
                     <button
                         onClick={() => setActiveTab('cart')}
-                        className="relative bg-gray-100 p-2.5 rounded-xl border border-gray-200 hover:bg-primary/10 transition-all text-gray-700"
+                        className="relative bg-gray-50 p-2.5 rounded-xl border border-gray-100 hover:bg-primary/10 transition-all text-gray-900 shadow-sm"
                     >
                         <ShoppingBag size={20} />
                         {cart.length > 0 && (
-                            <span className="absolute -top-1 -right-1 bg-primary text-[10px] font-bold h-5 w-5 flex items-center justify-center rounded-full border-2 border-white text-white">
+                            <span className="absolute -top-1 -right-1 bg-primary text-[10px] font-black h-5 w-5 flex items-center justify-center rounded-full border-2 border-white text-white">
                                 {cart.length}
                             </span>
                         )}

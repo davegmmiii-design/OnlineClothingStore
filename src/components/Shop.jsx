@@ -108,14 +108,14 @@ const Shop = ({ addToCart }) => {
     return (
         <div className="space-y-6">
             {/* Category Tabs */}
-            <div className="flex gap-2 overflow-x-auto pb-4 scrollbar-hide -mx-4 px-4 font-outfit">
+            <div className="flex gap-2 overflow-x-auto pb-4 scrollbar-hide -mx-4 px-4">
                 {categories.map(cat => (
                     <button
                         key={cat}
                         onClick={() => setCategory(cat)}
-                        className={`px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all ${category === cat
+                        className={`px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all ${category === cat
                             ? 'bg-primary text-white shadow-lg shadow-primary/30'
-                            : 'bg-white text-gray-400 border border-gray-100 hover:border-primary/20'
+                            : 'bg-gray-100 text-gray-900 border border-gray-200'
                             }`}
                     >
                         {cat}

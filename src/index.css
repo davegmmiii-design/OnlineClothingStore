@@ -6,8 +6,8 @@
   font-weight: 400;
 
   color-scheme: light;
-  color: #1a1a1a;
-  background-color: #f8f9fa;
+  color: #000000 !important;
+  background-color: #ffffff !important;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -21,14 +21,23 @@ body {
   place-content: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #ffffff !important;
+  color: #000000 !important;
 }
 
 #root {
   width: 100%;
 }
 
-/* Telegram Mini App Theme Integration */
-body {
-  background-color: var(--tg-theme-bg-color, #f8f9fa);
-  color: var(--tg-theme-text-color, #1a1a1a);
+/* Force dark text for all spans, paragraphs and headers to fix white-on-white issues */
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div {
+  color: inherit;
 }

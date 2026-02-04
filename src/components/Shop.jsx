@@ -114,10 +114,11 @@ const Shop = ({ addToCart }) => {
                     <button
                         key={cat}
                         onClick={() => setCategory(cat)}
-                        className={`px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all ${category === cat
-                            ? 'bg-primary text-white shadow-lg shadow-primary/30'
-                            : 'bg-gray-100 text-gray-900 border border-gray-200'
+                        className={`px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all shadow-sm ${category === cat
+                            ? 'text-white'
+                            : 'text-black border border-gray-100'
                             }`}
+                        style={{ backgroundColor: category === cat ? '#ff4d8d' : '#f3f4f6' }}
                     >
                         {cat}
                     </button>

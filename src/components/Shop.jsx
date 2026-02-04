@@ -42,6 +42,7 @@ const ProductCard = ({ product, addToCart }) => (
 const Shop = ({ addToCart }) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const [category, setCategory] = useState('All');
 
     useEffect(() => {
@@ -51,9 +52,14 @@ const Shop = ({ addToCart }) => {
     const fetchProducts = async () => {
         try {
             const response = await axios.get(`${APPS_SCRIPT_URL}?action=getProducts`);
-            setProducts(response.data);
+            if (Array.isArray(response.data)) {
+                setProducts(response.data);
+            } else {
+                setError("Invalid data format received");
+            }
         } catch (error) {
             console.error('Error fetching products:', error);
+            setError("Could not connect to the boutique database");
         } finally {
             setLoading(false);
         }
@@ -71,6 +77,34 @@ const Shop = ({ addToCart }) => {
         );
     }
 
+    if (error) {
+        return (
+            <div className="flex flex-col items-center justify-center min-h-[50vh] text-center p-6">
+                <div className="bg-red-500/10 p-4 rounded-full mb-4">
+                    <ShoppingBag className="text-red-500" size={32} />
+                </div>
+                <h3 className="text-lg font-bold mb-2">Boutique Offline</h3>
+                <p className="text-gray-400 text-sm max-w-xs">{error}. Please check your connection or Apps Script settings.</p>
+                <button
+                    onClick={() => { setLoading(true); setError(null); fetchProducts(); }}
+                    className="mt-6 px-6 py-2 bg-primary rounded-xl font-bold"
+                >
+                    Try Again
+                </button>
+            </div>
+        );
+    }
+
+    if (products.length === 0) {
+        return (
+            <div className="flex flex-col items-center justify-center min-h-[50vh] text-center p-6">
+                <ShoppingBag className="text-gray-600 mb-4" size={48} />
+                <h3 className="text-lg font-bold mb-2">Boutique Empty</h3>
+                <p className="text-gray-400 text-sm">No products found in the database. Add some items to your "Products" sheet!</p>
+            </div>
+        );
+    }
+
     return (
         <div className="space-y-6">
             {/* Category Tabs */}
@@ -80,8 +114,8 @@ const Shop = ({ addToCart }) => {
                         key={cat}
                         onClick={() => setCategory(cat)}
                         className={`px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-all ${category === cat
-                                ? 'bg-primary text-white shadow-lg shadow-primary/30'
-                                : 'bg-white/5 text-gray-400 border border-white/10'
+                            ? 'bg-primary text-white shadow-lg shadow-primary/30'
+                            : 'bg-white/5 text-gray-400 border border-white/10'
                             }`}
                     >
                         {cat}
